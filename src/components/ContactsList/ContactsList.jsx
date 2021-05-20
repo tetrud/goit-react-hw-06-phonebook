@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-import contactActions from '../../redux/contact-action';
+import contactsActions from '../../redux/contacts/contacts-action';
 import './ContactsList.scss';
 
 const ContactsList = ({ contacts, onDeleteContact }) => (
@@ -26,7 +26,6 @@ const ContactsList = ({ contacts, onDeleteContact }) => (
 
 const getFilterContacts = (allContacts, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  console.log(allContacts);
 
   return allContacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter),
@@ -38,7 +37,7 @@ const mapStateToProps = ({ contacts: { items, filter } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onDeleteContact: id => dispatch(contactActions.deleteContact(id)),
+  onDeleteContact: id => dispatch(contactsActions.deleteContact(id)),
 });
 
 ContactsList.propTypes = {

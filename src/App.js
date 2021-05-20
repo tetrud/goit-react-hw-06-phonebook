@@ -1,5 +1,3 @@
-import { connect } from 'react-redux';
-
 import Title from './components/Title';
 import ContactForm from './components/ContactForm';
 import ContactsList from './components/ContactsList';
@@ -14,4 +12,4 @@ const App = () => (
   </>
 );
 
-export default connect()(App);
+export default App;
