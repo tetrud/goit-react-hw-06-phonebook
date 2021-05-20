@@ -1,6 +1,8 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Title from '../Title';
+import contactActions from '../../redux/contact-action';
 import './ContactForm.scss';
 
 class Form extends Component {
@@ -20,14 +22,11 @@ class Form extends Component {
     const { name, number } = this.state;
 
     this.props.onSubmit(name, number);
-    this.reset();
-  };
-
-  reset = () => {
     this.setState({ name: '', number: '' });
   };
 
   render() {
+    const { name, number } = this.state;
     return (
       <>
         <Title title="Phonebook" />
@@ -63,7 +62,7 @@ class Form extends Component {
             <button
               className="Phonebook__button"
               type="submit"
-              disabled={!this.state.name && !this.state.number}
+              disabled={!name && !number}
             >
               Add contact
             </button>
@@ -74,4 +73,8 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (name, number) => dispatch(contactActions.addContact(name, number)),
+});
+
+export default connect(null, mapDispatchToProps)(Form);
