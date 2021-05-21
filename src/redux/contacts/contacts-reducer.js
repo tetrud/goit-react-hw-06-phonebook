@@ -22,7 +22,7 @@ const items = createReducer([], {
 });
 
 const filter = createReducer('', {
-  [action.changeFilters]: (_, { payload }) => payload,
+  [action.changeFilter]: (_, { payload }) => payload,
 });
 
 export default combineReducers({ items, filter });

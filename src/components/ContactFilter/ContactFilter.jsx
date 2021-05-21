@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import contactsActions from '../../redux/contacts/contacts-action';
 import './ContactFilter.scss';
 
-const Filter = ({ value, onChange }) => (
+const ContactFilter = ({ value, onChange }) => (
   <label className="Filter__label">
     Find contacts by name
     <input
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => ({
   onChange: event => dispatch(contactsActions.changeFilter(event.target.value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactFilter);
